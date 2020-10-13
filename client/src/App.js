@@ -1,15 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
+import MainDrawer from "./components/main/MainDrawer"
+import  {useStyles} from "./components/styles/Styles"
+
 import './App.css';
 
 function App() {
+  const classes = useStyles();
   return (
-    <div className="App">
-      <h1>Hello world</h1>
-      <h1>Hello world</h1>
-      <h1>Hello world</h1>
-      <h1>Hello world</h1>
-    </div>
+   <MainDrawer classes={classes}/>
   );
 }
 
