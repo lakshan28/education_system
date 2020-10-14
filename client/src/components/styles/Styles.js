@@ -35,6 +35,8 @@ export const useStyles = makeStyles((theme) => ({
       content: {
         flexGrow: 1,
         padding: theme.spacing(3),
+        backgroundColor: "#EAEDED",
+        height:"100%"
       },
 
       linkActiveButton: {
@@ -69,6 +71,9 @@ export const useStyles = makeStyles((theme) => ({
       drawerButtonText: {
         fontWeight: "550",
       },
+      addBtn:{
+        backgroundColor: "#FBEEE6",
+      }
 }));
 
 
