@@ -3,7 +3,7 @@ import React from "react";
 function Languges() {
   return (
     <div>
-      <h1>Namo Buddhaya</h1>
+      <h1>Languges</h1>
     </div>
   );
 }

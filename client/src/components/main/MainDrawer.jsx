@@ -5,16 +5,18 @@ import { useTheme } from "@material-ui/core/styles";
 
 import {
   AppBar,
+  Toolbar,
   CssBaseline,
   Divider,
   Drawer,
   Hidden,
   IconButton,
+  Typography,
+  Grid,
 } from "@material-ui/core";
 
 import MenuIcon from "@material-ui/icons/Menu";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
+import NotificationsActiveIcon from "@material-ui/icons/NotificationsActive";
 
 import DrawerButton from "../commonCommponents/DrawerButton";
 import PersonalInfo from "../categories/personalInfo/PersonalInfo";
@@ -22,6 +24,7 @@ import Certification from "../categories/certification/Certification";
 import Employment from "../categories/employment/Employment";
 import Education from "../categories/education/Education";
 import Languges from "../categories/languges/Languges";
+
 function MainDrawer(props) {
   const { window, classes } = props;
 
@@ -40,6 +43,7 @@ function MainDrawer(props) {
   // drawer in mobile state
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
+  //  drawer open and close state
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -109,13 +113,30 @@ function MainDrawer(props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap>
-              Responsive drawer
-            </Typography>
+            <Grid container>
+              <Grid item xs={12} sm={6}>
+                <Typography variant="h6" noWrap>
+                  Dashboard | Classes
+                </Typography>
+              </Grid>
+
+              <Grid
+                container
+                item
+                xs={12}
+                sm={6}
+                justify="flex-end"
+                alignItems="center"
+              >
+                <Typography noWrap>lakshansampath28@gmail.com</Typography>
+                <NotificationsActiveIcon
+                  style={{ color: "#2E86C1", margin: "0rem 1rem" }}
+                />
+              </Grid>
+            </Grid>
           </Toolbar>
         </AppBar>
         <nav className={classes.drawer} aria-label="mailbox folders">
-          {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
           <Hidden smUp implementation="css">
             <Drawer
               container={container}
@@ -127,7 +148,7 @@ function MainDrawer(props) {
                 paper: classes.drawerPaper,
               }}
               ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
+                keepMounted: true,
               }}
             >
               {drawer}
@@ -176,10 +197,6 @@ function MainDrawer(props) {
 }
 
 MainDrawer.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 

@@ -16,14 +16,14 @@ function DrawerButton(props) {
     <Link
       to={linkPath}
       className={
-        active == buttonState ? classes.linkActiveButton : classes.linkButton
+        active === buttonState ? classes.linkActiveButton : classes.linkButton
       }
       onClick={() => setActive(buttonState)}
     >
       <div className={classes.drawerButton}>
         <div
           className={
-            active == buttonState
+            active === buttonState
               ? classes.drawerButtonLineActive
               : classes.drawerButtonLine
           }
