@@ -73,7 +73,16 @@ export const useStyles = makeStyles((theme) => ({
       },
       addBtn:{
         backgroundColor: "#FBEEE6",
-      }
+      },
+      cardHeader: {
+        background: " linear-gradient(to right, #F4ECF7,#E8DAEF)",
+        color: "#000",
+        borderBottom: "2px solid #000",
+    
+        "&:hover": {
+          color: "#000",
+        },
+      },
 }));
 
 

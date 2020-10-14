@@ -3,7 +3,7 @@ import React from "react";
 function PersonalInfo() {
   return (
     <div>
-      <h1>Namo Buddhaya</h1>
+      <h1>PersonalInfo</h1>
     </div>
   );
 }
