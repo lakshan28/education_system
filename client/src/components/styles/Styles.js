@@ -45,7 +45,7 @@ export const useStyles = makeStyles((theme) => ({
 
       linkActiveButton: {
         textDecoration: "none",
-        color: "#E28C03",
+        color: "#8E44AD",
       },
       linkButton: {
         textDecoration: "none",
@@ -64,8 +64,8 @@ export const useStyles = makeStyles((theme) => ({
       drawerButtonLineActive: {
         width: 5,
         height: "100%",
-        backgroundColor: "#E28C03",
-        color: "#E28C03",
+        backgroundColor: "#8E44AD",
+        color: "#8E44AD",
       },
       drawerButtonLine: {
         width: 5,

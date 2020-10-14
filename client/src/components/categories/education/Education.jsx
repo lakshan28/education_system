@@ -82,7 +82,10 @@ function Education(props) {
             <DeleteIcon />
           </Grid>
         </Grid>
-        <Grid container item xs={12} justify="flex-end">
+        <Grid container item xs={12} justify="space-between">
+          <Button variant="contained" className={classes.nextbtn}>
+            Back
+          </Button>
           <Button variant="contained" className={classes.nextbtn}>
             Next
           </Button>
