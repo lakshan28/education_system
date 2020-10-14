@@ -18,11 +18,27 @@ import {
 import DevicesOtherOutlined from "@material-ui/icons/DevicesOtherOutlined";
 
 import FormikInput from "../../commonCommponents/FormikInput";
+import CommonSelect from "../../commonCommponents/CommonSelect";
 // import Snackbar from "../Snackbar";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Grow ref={ref} {...props} />;
 });
+
+const monthOption = [
+  "January",
+  "February",
+  "March",
+  "April ",
+  "May",
+  "June",
+  "July ",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
 function AddEducation(props) {
   const { classes, dialogOpenState, handleDialogClose } = props;
@@ -48,9 +64,9 @@ function AddEducation(props) {
   const validationSchema = Yup.object({
     institute: Yup.string().required("Required"),
     startMonth: Yup.string().required("Required"),
-    startYear: Yup.string().required("Required"),
+    startYear: Yup.number().required("Required"),
     endMonth: Yup.string().required("Required"),
-    endYear: Yup.string().required("Required"),
+    endYear: Yup.number().required("Required"),
   });
 
   const onSubmit = async (values, submitProps) => {
@@ -96,9 +112,11 @@ function AddEducation(props) {
             {(formik) => {
               return (
                 <Form noValidate>
-                  <Grid container spacing={2}>
+                  <Grid container spacing={2} style={{ marginTop: "2rem" }}>
                     <Grid item xs={12}>
-                      <Typography>Institute</Typography>
+                      <Typography className={classes.textFeildName}>
+                        Institute
+                      </Typography>
                     </Grid>
                     <Grid item xs={12}>
                       <FormikInput
@@ -111,16 +129,18 @@ function AddEducation(props) {
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      <Typography>Institute</Typography>
+                      <Typography className={classes.textFeildName}>
+                        Period
+                      </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <FormikInput
+                      <CommonSelect
                         error={
                           formik.errors.startMonth && formik.touched.startMonth
                         }
+                        options={monthOption}
                         name="startMonth"
-                        type="text"
-                        label={"Institute *"}
+                        label={"Month *"}
                       />
                     </Grid>
                     <Grid item xs={6}>
@@ -129,40 +149,32 @@ function AddEducation(props) {
                           formik.errors.startYear && formik.touched.startYear
                         }
                         name="startYear"
-                        type="text"
-                        label={"Institute *"}
+                        type="number"
+                        label={"Year *"}
                       />
                     </Grid>
                     <Grid item xs={12}>
-                      <Typography>Institute</Typography>
+                      <Typography className={classes.textFeildName}>
+                        Through
+                      </Typography>
                     </Grid>
                     <Grid item xs={6}>
-                      <FormikInput
+                      <CommonSelect
                         error={
                           formik.errors.endMonth && formik.touched.endMonth
                         }
+                        options={monthOption}
                         name="endMonth"
-                        type="text"
-                        label={"Institute *"}
+                        label={"Month *"}
                       />
                     </Grid>
                     <Grid item xs={6}>
                       <FormikInput
                         error={formik.errors.endYear && formik.touched.endYear}
                         name="endYear"
-                        type="text"
-                        label={"Institute *"}
+                        type="number"
+                        label={"Year *"}
                       />
-                    </Grid>
-                    <Grid item xs={12}>
-                      {/* <BulkSelection
-                          error={
-                            formik.errors.institute && formik.touched.bulkName
-                          }
-                          options={bulkNames}
-                          name="bulkName"
-                          label={"Existing Bulk Name*"}
-                        /> */}
                     </Grid>
 
                     <Grid
@@ -178,6 +190,14 @@ function AddEducation(props) {
                         onClick={handleDialogClose}
                       >
                         Cancel
+                      </Button>
+
+                      <Button
+                        variant="contained"
+                        className={classes.btnBack}
+                        onClick={handleDialogClose}
+                      >
+                        Save & Add more
                       </Button>
                       <Button
                         variant="contained"

@@ -27,7 +27,7 @@ export const useStyles = makeStyles((theme) => ({
           display: "none",
         },
       },
-      // necessary for content to be below app bar
+     
       toolbar: theme.mixins.toolbar,
       drawerPaper: {
         width: drawerWidth,
@@ -36,7 +36,11 @@ export const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         padding: theme.spacing(3),
         backgroundColor: "#EAEDED",
-        height:"100%"
+        margin: '5rem 2rem 2rem 2rem',
+        padding: "0rem 3rem 3rem 3rem",
+        boxShadow: "3px 3px 6px #00000029",
+        borderRadius:"1rem",
+        minWidth:"700px"
       },
 
       linkActiveButton: {
@@ -83,6 +87,32 @@ export const useStyles = makeStyles((theme) => ({
           color: "#000",
         },
       },
+      textFeildName:{
+        marginBottom: "-1rem",
+        fontWeight:"600"
+      },
+      btnBack: {
+        textTransform:"none",
+        color: "#fff",
+        marginLeft: "1rem",
+       
+        backgroundColor: "#A569BD",
+        "&:hover": {
+          backgroundColor: "#A569BD",
+          color: "#000",
+        },
+      },
+      nextbtn: {
+        textTransform:"none",
+        color: "#fff",
+        backgroundColor: "#8E44AD",
+        marginLeft: "1rem",
+        "&:hover": {
+          backgroundColor: "#8E44AD",
+          color: "#000",
+        },
+      },
+
 }));
 
 
