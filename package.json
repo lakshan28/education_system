@@ -4,8 +4,8 @@
   "description": "sample_test",
   "main": "server.js",
   "scripts": {
-    "start": "node backend/server",
-    "server": "nodemon backend/server"
+    "start": "node server",
+    "server": "nodemon server"
   },
   "author": "lakshan_sampath",
   "license": "ISC",
