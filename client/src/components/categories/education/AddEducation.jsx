@@ -16,10 +16,8 @@ import {
 } from "@material-ui/core";
 
 import DevicesOtherOutlined from "@material-ui/icons/DevicesOtherOutlined";
-
 import FormikInput from "../../commonCommponents/FormikInput";
 import CommonSelect from "../../commonCommponents/CommonSelect";
-// import Snackbar from "../Snackbar";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Grow ref={ref} {...props} />;
@@ -41,18 +39,9 @@ const monthOption = [
 ];
 
 function AddEducation(props) {
-  const { classes, dialogOpenState, handleDialogClose } = props;
+  const { classes, dialogOpenState, handleDialogClose, refreshTable } = props;
 
-  // Snackbar states.
-  const [snackText, setSnackText] = React.useState();
-  const [snackVariant, setSnackVariant] = React.useState();
-
-  // reset snakbar
-  const resetSnack = () => {
-    setSnackText();
-    setSnackVariant();
-  };
-
+  //initial data
   const initialValues = {
     institute: "",
     startMonth: "",
@@ -61,6 +50,7 @@ function AddEducation(props) {
     endYear: "",
   };
 
+  // validation fields
   const validationSchema = Yup.object({
     institute: Yup.string().required("Required"),
     startMonth: Yup.string().required("Required"),
@@ -69,15 +59,36 @@ function AddEducation(props) {
     endYear: Yup.number().required("Required"),
   });
 
+  //supmit all data
   const onSubmit = async (values, submitProps) => {
     submitProps.setSubmitting(false);
     submitProps.resetForm();
-    //   handleDialogClose();
+    const inserData = {
+      institute: values.institute,
+      duration: `${values.startMonth} ${values.startYear} to ${values.endMonth} ${values.endYear}`,
+    };
+    const packet = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+
+      body: JSON.stringify(inserData),
+    };
+    const url = "/api/education";
+    await fetch(url, packet)
+      .then((response) => response.json())
+      .then((result) => {
+        console.log(result);
+        refreshTable();
+      })
+      .catch((err) => console.log(err));
+    handleDialogClose();
   };
 
   return (
     <>
-      {/* <Snackbar text={snackText} variant={snackVariant} reset={resetSnack} /> */}
       <Dialog
         open={dialogOpenState}
         onClose={handleDialogClose}
@@ -192,13 +203,6 @@ function AddEducation(props) {
                         Cancel
                       </Button>
 
-                      <Button
-                        variant="contained"
-                        className={classes.btnBack}
-                        onClick={handleDialogClose}
-                      >
-                        Save & Add more
-                      </Button>
                       <Button
                         variant="contained"
                         className={classes.nextbtn}
